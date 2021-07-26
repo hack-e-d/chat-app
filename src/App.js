@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import './App.css';
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -92,7 +93,7 @@ function ChatRoom() {
   }
 
   return (
-    <div className="chat-bg w-full sm:w-2/3 p-2 rounded">
+    <div className="chat-bg w-full sm:w-2/3 p-2 rounded" style={{padding: '2rem' }}>
       <div className="overflow-y-auto h-screen-90">
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
         <span ref={dummy}></span>
@@ -111,14 +112,14 @@ function ChatMessage(props) {
 
   const messageClass = uid === auth.currentUser.uid ? 'flex-row-reverse' : 'flex-row';
   const messageBodyClass = uid === auth.currentUser.uid ? 'sent-message-bg text-right' : 'received-message-bg';
-  const imageClass = uid === auth.currentUser.uid ? 'ml-2' : 'mr-2';
+  const sender_reciver = uid === auth.currentUser.uid ? 'right' : 'left';
 
     return (
-      <div className={`px-3 py-2 flex no-wrap items-start ${messageClass}`}>
+      <div className={`chat-container ${sender_reciver}`}>
         <div>
-          <img className={`block rounded-full object-cover w-10 ${imageClass}`} src={photoURL || 'https://i.imgur.com/rFbS5ms.png'} alt="{user}'s pfp" />
+          <img  src={photoURL || 'https://i.imgur.com/rFbS5ms.png'} alt="{user}'s pfp" />
         </div>
-        <div className={`block w-80 break-words p-2 rounded-md ${messageBodyClass}`}>
+        <div className='msg-container'>
           <p className="text-xs">{user}</p>
           <p>{body}</p>
         </div>

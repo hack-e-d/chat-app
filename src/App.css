@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+img {
+  left:0;
+  border-radius: 50%;
+  height: 2.5rem;
+  padding: 3px;
+  margin: 1rem;
+}
+
+.chat-container { 
+  display: flex;
+  padding-bottom: 2rem;
+  align-items: center;
+}
+
+.left {
+  flex-direction: row;
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+.msg-container {
+  border-radius: 10px;
+  margin-left: 1rem;
+  background-color: red;
+  width: 75%;
+  text-align: left;
+  padding-left: 1rem;
+}
